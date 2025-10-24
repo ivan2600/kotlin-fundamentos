@@ -1,6 +1,6 @@
 fun main() {
 
-    var nombre = "Ivi"
+    val nombre = "Ivi"
 
     println("Hola $nombre desde IntelliJ 😄")
 }
