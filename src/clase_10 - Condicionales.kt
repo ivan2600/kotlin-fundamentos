@@ -10,6 +10,7 @@ fun leerPassword(): String {
     return password
 }
 
+//EJERCICIO
 fun clasificarEmail(direccion: String): String {
     val rango = if (direccion.contains("admin")) {
         "Administrador"
