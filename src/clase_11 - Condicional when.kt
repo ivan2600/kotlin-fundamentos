@@ -22,7 +22,7 @@ fun main() {
     val seguridadDePassword = when {
         password.length >= 8 -> "alto"
         password.length >= 6 -> "medio"
-        password.length == 0 -> "nulo"
+        password.isEmpty() -> "nulo"
         else -> "bajo"
     }
     println("Tu nivel de seguridad de password es $seguridadDePassword")
