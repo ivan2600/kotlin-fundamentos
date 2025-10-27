@@ -12,10 +12,10 @@ fun  calculadora() {
         println("ERROR")
     } else {
         when (operador) {
-            "+" -> println("El resultado es: ${primerNumero + segundoNumero}")
-            "-" -> println("El resultado es: ${primerNumero - segundoNumero}")
-            "*" -> println("El resultado es: ${primerNumero * segundoNumero}")
-            "/" -> println("El resultado es: ${primerNumero / segundoNumero}")
+            "+" -> println("El resultado es: ${ primerNumero + segundoNumero }")
+            "-" -> println("El resultado es: ${ primerNumero - segundoNumero }")
+            "*" -> println("El resultado es: ${ primerNumero * segundoNumero }")
+            "/" -> println("El resultado es: ${ primerNumero / segundoNumero }")
             else -> println("Operador no valido.")
         }
     }
