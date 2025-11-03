@@ -1,0 +1,10 @@
+3,Venusaur
+21,Spearow
+36,Clefable
+51,Dugtrio
+83,Farfetch’d
+112,Rhydon
+119,Seaking
+120,Staryu
+127,Pinsir
+144,Articuno

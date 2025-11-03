@@ -1,6 +1,14 @@
-data class CartaPokemon (val numero: Int, val nombre: String)
+import java.io.File
+import java.time.LocalDate
 
-val cartasDisponibles = listOf<CartaPokemon>(
+// -------------------- CLASES --------------------
+
+data class CartaPokemon(val numero: Int, val nombre: String)
+data class RegistroSobres(var fecha: LocalDate, var abiertos: Int)
+
+// -------------------- BASE DE DATOS DE CARTAS --------------------
+
+val cartasDisponibles = listOf(
     CartaPokemon(0, "Pokebola"),
     CartaPokemon(1, "Bulbasaur"),
     CartaPokemon(2, "Ivysaur"),
@@ -155,68 +163,123 @@ val cartasDisponibles = listOf<CartaPokemon>(
     CartaPokemon(151, "Mew")
 )
 
-val album = mutableListOf<CartaPokemon>()
+// -------------------- GUARDADO Y CARGA --------------------
 
-val sobre = mutableListOf<CartaPokemon>()
+fun guardarAlbum(album: List<CartaPokemon>) {
+    val archivo = File("album.txt")
+    archivo.printWriter().use { out ->
+        for (carta in album) out.println("${carta.numero},${carta.nombre}")
+    }
+}
+
+fun cargarAlbum(): MutableList<CartaPokemon> {
+    val archivo = File("album.txt")
+    val albumCargado = mutableListOf<CartaPokemon>()
+    if (archivo.exists()) {
+        archivo.forEachLine { linea ->
+            val (numero, nombre) = linea.split(",")
+            albumCargado.add(CartaPokemon(numero.toInt(), nombre))
+        }
+        println("📂 Álbum cargado con ${albumCargado.size} cartas.")
+    } else println("🆕 No hay álbum guardado, comenzamos desde cero.")
+    return albumCargado
+}
+
+fun cargarRegistro(): RegistroSobres {
+    val archivo = File("registro.txt")
+    return if (archivo.exists()) {
+        val (fecha, abiertos) = archivo.readText().split(",")
+        RegistroSobres(LocalDate.parse(fecha), abiertos.toInt())
+    } else RegistroSobres(LocalDate.now(), 0)
+}
+
+fun guardarRegistro(registro: RegistroSobres) {
+    val archivo = File("registro.txt")
+    archivo.writeText("${registro.fecha},${registro.abiertos}")
+}
+
+// -------------------- FUNCIONES PRINCIPALES --------------------
 
 fun opciones() {
-    println("*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*")
-    println("Elige una opción:")
+    println("\n*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*")
     println("1. Abrir sobre de cartas")
     println("2. Ver cartas coleccionadas")
-    println("3. Cuantas cartas tengo?")
+    println("3. Cuántas cartas tengo?")
+    println("4. Guardar progreso y salir")
+    println("5. Ver cartas que faltan")
     println("*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*")
 }
 
-fun abrirSobre() {
-    val carta1 = sobre.add(cartasDisponibles.random())
-    val carta2 = sobre.add(cartasDisponibles.random())
-    val carta3 = sobre.add(cartasDisponibles.random())
-    val carta4 = sobre.add(cartasDisponibles.random())
-    val carta5 = sobre.add(cartasDisponibles.random())
-    println("Estas son tus nuevas cartas...")
-    for (carta in sobre) {
-        println("#${carta.numero} - ${carta.nombre}")
-    }
-}
+fun abrirSobre(album: MutableList<CartaPokemon>, registro: RegistroSobres) {
+    val hoy = LocalDate.now()
 
-fun agregarNuevasCartas() {
-    for (carta in sobre) {
-        if (!album.contains(carta))
-        album.add(carta)
+    if (registro.fecha != hoy) {
+        registro.fecha = hoy
+        registro.abiertos = 0
     }
+
+    if (registro.abiertos >= 2) {
+        println("⛔ Ya abriste tus sobres diarios. Volvé mañana!")
+        return
+    }
+
+    registro.abiertos++
+    guardarRegistro(registro)
+
+    val sobre = mutableListOf<CartaPokemon>()
+    repeat(5) { sobre.add(cartasDisponibles.random()) }
+
+    println("Estas son tus nuevas cartas...")
+    for (carta in sobre) println("#${carta.numero} - ${carta.nombre}")
+
+    for (carta in sobre) if (!album.contains(carta)) album.add(carta)
     sobre.clear()
 }
 
-fun verCartasColeccionadas() {
+fun verCartasColeccionadas(album: MutableList<CartaPokemon>) {
     album.sortBy { it.numero }
-    println("Estas son las cartas de tu colleccion:")
-    for (carta in album) {
-        println("#${carta.numero} - ${carta.nombre}")
+    println("Estas son las cartas de tu colección:")
+    for (carta in album) println("#${carta.numero} - ${carta.nombre}")
+}
+
+fun cuantasTengo(album: MutableList<CartaPokemon>) {
+    println("Tienes ${album.size}/152 cartas.")
+}
+
+fun verCartasFaltantes(album: MutableList<CartaPokemon>) {
+    val faltantes = cartasDisponibles.filterNot { album.contains(it) }
+    if (faltantes.isEmpty()) {
+        println("🎉 ¡Felicitaciones! Completaste tu colección!")
+    } else {
+        println("Te faltan ${faltantes.size} cartas:")
+        faltantes.sortedBy { it.numero }.forEach {
+            println("#${it.numero} - ${it.nombre}")
+        }
     }
 }
 
-fun cuantasTengo() {
-    println("Tienes ${album.size}/152.")
-}
+// -------------------- MAIN --------------------
 
 fun main() {
     println("*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*")
     println("*.*.*.*.* ALBUM DE CARTAS DE POKEMON *.*.*.*.*")
 
+    val album = cargarAlbum()
+    val registro = cargarRegistro()
+
     while (true) {
         opciones()
-        val opcionElegida = readlnOrNull()?.toIntOrNull()
-        when (opcionElegida) {
-            1 -> {
-                abrirSobre()
-                agregarNuevasCartas()
+        when (readlnOrNull()?.toIntOrNull()) {
+            1 -> abrirSobre(album, registro)
+            2 -> verCartasColeccionadas(album)
+            3 -> cuantasTengo(album)
+            4 -> {
+                guardarAlbum(album)
+                guardarRegistro(registro)
+                println("💾 Progreso guardado. ¡Hasta la próxima, entrenador!")
+                break
             }
-            2 -> verCartasColeccionadas()
-            3 -> cuantasTengo()
+            5 -> verCartasFaltantes(album)
         }
     }
 }
-
-
- 
