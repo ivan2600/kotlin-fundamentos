@@ -1,3 +1,5 @@
+package clase_17
+
 class EmailNormal (
     val asunto: String,
     val remitente: String,

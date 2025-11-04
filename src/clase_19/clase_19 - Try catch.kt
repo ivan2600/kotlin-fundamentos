@@ -1,3 +1,5 @@
+package clase_19
+
 class EmailInvalidException(message: String): Exception(message)
 
 fun main() {
@@ -17,7 +19,7 @@ fun main() {
     try {
         for (email in emails) {
             if (!email.contains("@"))
-                throw EmailInvalidException("Email invalido no tiene @.")
+                throw EmailInvalidException("clase_15.Email invalido no tiene @.")
         }
     } catch (e: EmailInvalidException) {
         println("Mensaje de error: ${e.message}")

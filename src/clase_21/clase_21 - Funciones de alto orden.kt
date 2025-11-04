@@ -46,6 +46,6 @@ fun enviarEmail(
         val mensaje = "Enviado a ${email.sender}"
         onSuccess(email, mensaje)
     } else {
-        onError("Email invalido: ${email.sender}", 400)
+        onError("clase_15.Email invalido: ${email.sender}", 400)
     }
 }

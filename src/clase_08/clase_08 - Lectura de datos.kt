@@ -1,6 +1,8 @@
+package clase_08
+
 fun main() {
 
-    println("*****Sistema de Email*****")
+    println("*****Sistema de clase_15.Email*****")
     print("Ingresa tu email: ")
     val email = readLine() ?: "Sin email"
 

@@ -1,3 +1,5 @@
+package clase_09
+
 fun mensajeBienvenida() {
     println("=====SISTEMA DE EMAIL=====")
     println("Bienvenido al gestor de emails")
@@ -36,7 +38,7 @@ fun crearMensajeEmail(destinatario : String, asunto : String, mensaje : String) 
 }
 
 fun enviarEmail() {
-   println("Email enviado...")
+   println("clase_15.Email enviado...")
 }
 
 //EJERCICIO
@@ -45,7 +47,7 @@ fun leerDatosCompletos(): String {
     val nombre = readlnOrNull()?.trim() ?: "Anonimo"
     println("Ingresa tu email: ")
     val email = readlnOrNull()?.trim() ?: "Sin correo"
-    return "Nombre: $nombre - Email: $email"
+    return "Nombre: $nombre - clase_15.Email: $email"
 }
 
 fun main() {

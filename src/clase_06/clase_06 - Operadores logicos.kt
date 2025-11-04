@@ -1,3 +1,5 @@
+package clase_06
+
 fun main() {
 
     val emailsRecibidos = 15

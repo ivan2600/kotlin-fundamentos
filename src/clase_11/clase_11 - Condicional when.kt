@@ -1,3 +1,5 @@
+package clase_11
+
 fun main() {
     print("Ingresa tu dirección de email: ")
     val email = readlnOrNull() ?: "-"

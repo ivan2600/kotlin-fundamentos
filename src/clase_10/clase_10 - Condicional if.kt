@@ -1,3 +1,5 @@
+package clase_10
+
 fun leerEmails(): String {
     println("Ingresa tu email: ")
     val email = readlnOrNull()?.trim() ?: "Sin correo"

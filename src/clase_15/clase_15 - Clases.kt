@@ -1,3 +1,5 @@
+package clase_15
+
 class Email (
     val asunto: String,
     val remitente: String,

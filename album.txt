@@ -2,18 +2,27 @@
 9,Blastoise
 14,Kakuna
 21,Spearow
+26,Raichu
 27,Sandshrew
 36,Clefable
+37,Vulpix
+46,Paras
 48,Venonat
 51,Dugtrio
 83,Farfetch’d
 86,Seel
+90,Shellder
 101,Electrode
 103,Exeggutor
 109,Koffing
 112,Rhydon
+117,Seadra
 119,Seaking
 120,Staryu
+122,Mr. Mime
+124,Jynx
+126,Magmar
 127,Pinsir
+129,Magikarp
 134,Vaporeon
 144,Articuno

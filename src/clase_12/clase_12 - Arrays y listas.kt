@@ -1,3 +1,5 @@
+package clase_12
+
 fun main() {
 
     val emails = arrayOf("ivan@quicklysabor.com", "osvaldo@quicklysabor.com", "ivana@quicklysabor.com")

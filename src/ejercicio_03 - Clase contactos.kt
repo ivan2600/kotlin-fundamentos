@@ -3,7 +3,7 @@ class Contacto (
     val email: String
 ) {
     fun mostrarContacto() {
-        println("Nombre: $nombre | Email: $email")
+        println("Nombre: $nombre | clase_15.Email: $email")
     }
 }
 

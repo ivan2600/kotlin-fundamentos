@@ -1,3 +1,5 @@
+package clase_20
+
 fun String.isValidEmail(): Boolean {
     return this.contains("@") && this.contains(".")
 }
@@ -18,7 +20,7 @@ data class Email2 (
 
 fun Email2.markAsRead() {
     this.isRead = true
-    println("Email ${this.subject} marcado como leido.")
+    println("clase_15.Email ${this.subject} marcado como leido.")
 }
 
 fun main() {

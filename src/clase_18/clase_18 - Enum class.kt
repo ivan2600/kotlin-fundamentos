@@ -1,3 +1,5 @@
+package clase_18
+
 enum class EmailFolders {
     INBOX,
     SENT,
