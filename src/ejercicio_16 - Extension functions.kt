@@ -10,5 +10,4 @@ fun main() {
     val unStringCualquiera = "tu vieja en tanga"
     println(unStringCualquiera.capitalizar())
     println(unStringCualquiera.contarPalabras())
-
 }
