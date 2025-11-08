@@ -9,8 +9,8 @@ const val string1 = "Hola"
 const val string2 = "como estas?"
 val masLarga = { a: String, b: String -> if (a.length > b.length) a else b }
 
-val palabras = listOf("hola", "adios", "botella", "sol")
-val filtrar = palabras.filter { it.length > 4 }
+val palabras1 = listOf("hola", "adios", "botella", "sol")
+val filtrar = palabras1.filter { it.length > 4 }
 
 val esLarga = { a: String -> a.length > 8 }
 

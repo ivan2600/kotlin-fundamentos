@@ -16,7 +16,10 @@
 51,Dugtrio
 58,Growlithe
 65,Alakazam
+66,Machop
+67,Machoke
 74,Geodude
+77,Ponyta
 79,Slowpoke
 83,Farfetch’d
 86,Seel
@@ -26,6 +29,7 @@
 108,Lickitung
 109,Koffing
 112,Rhydon
+115,Kangaskhan
 117,Seadra
 119,Seaking
 120,Staryu
@@ -36,3 +40,5 @@
 129,Magikarp
 134,Vaporeon
 144,Articuno
+146,Moltres
+150,Mewtwo
