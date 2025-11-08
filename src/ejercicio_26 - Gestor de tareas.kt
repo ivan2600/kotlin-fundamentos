@@ -1,5 +1,5 @@
 data class Tarea(
-    val descripcion: String,
+    var descripcion: String,
     var prioridad: Int,
     var completada: Boolean
 )
@@ -22,10 +22,24 @@ fun procesarTareas(
 
 val soloPendientes = { tarea: Tarea -> !tarea.completada }
 val soloPrioridadAlta = { tarea: Tarea -> tarea.prioridad > 3 }
-val marcarComoCompletada = { tarea: Tarea -> tarea.completada = true }
-val bajarPrioridad = { tarea: Tarea -> if (tarea.prioridad > 1) tarea.prioridad -- }
+
+// ✅ usando copy()
+val marcarComoCompletada = { tarea: Tarea ->
+    tarea.copy(completada = true)
+}
+
+// ✅ usando copy()
+val bajarPrioridad = { tarea: Tarea ->
+    tarea.copy(prioridad = if (tarea.prioridad > 1) tarea.prioridad - 1 else 1)
+}
+
+// ✅ usando copy()
+val aDescripcionLarga = { tarea: Tarea ->
+    tarea.copy(descripcion = tarea.descripcion.uppercase())
+}
 
 fun main() {
-    bajarPrioridad(tareas[4])
-    println(tareas[0])
+    println(procesarTareas(tareas, soloPendientes, marcarComoCompletada))
+    println(procesarTareas(tareas, soloPrioridadAlta, aDescripcionLarga))
+    println(procesarTareas(tareas, { true }, bajarPrioridad))
 }
