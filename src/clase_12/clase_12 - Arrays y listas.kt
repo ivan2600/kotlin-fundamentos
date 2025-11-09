@@ -14,19 +14,19 @@ fun main() {
     println(emails.get(1))
     println(emails[2])
     //Como imprimir un array COMPLETO?
-    println("La lista de correos es: ${ emails.joinToString() }.")
+    println("La ejercicio_24.lista de correos es: ${ emails.joinToString() }.")
     //Imprimir el tamaño de un array
     println("El tamaño del array es de ${ emails.size } pocisiones.")
 
     //Para crear un array modificable...
     val nuevaListaDeEmails = mutableListOf<String>()
-    println("Nueva lista: ${ nuevaListaDeEmails.joinToString() }, tamaño: ${ nuevaListaDeEmails.size }")
+    println("Nueva ejercicio_24.lista: ${ nuevaListaDeEmails.joinToString() }, tamaño: ${ nuevaListaDeEmails.size }")
     nuevaListaDeEmails.addAll(arrayOf("ivan@quicklysabor.com", "osvaldo@quicklysabor.com", "ivana@quicklysabor.com"))
-    println("Nueva lista: ${ nuevaListaDeEmails.joinToString() }, tamaño: ${ nuevaListaDeEmails.size }")
+    println("Nueva ejercicio_24.lista: ${ nuevaListaDeEmails.joinToString() }, tamaño: ${ nuevaListaDeEmails.size }")
     nuevaListaDeEmails.remove("ivana@quicklysabor.com")
-    println("Nueva lista: ${ nuevaListaDeEmails.joinToString() }, tamaño: ${ nuevaListaDeEmails.size }")
+    println("Nueva ejercicio_24.lista: ${ nuevaListaDeEmails.joinToString() }, tamaño: ${ nuevaListaDeEmails.size }")
     nuevaListaDeEmails.add(1, "dio.bruno.8@gmail.com")
-    println("Nueva lista: ${ nuevaListaDeEmails.joinToString() }, tamaño: ${ nuevaListaDeEmails.size }")
+    println("Nueva ejercicio_24.lista: ${ nuevaListaDeEmails.joinToString() }, tamaño: ${ nuevaListaDeEmails.size }")
     println(nuevaListaDeEmails)
 
     val lista = listOf<String>("Megadeth", "Metallica", "Pantera")
