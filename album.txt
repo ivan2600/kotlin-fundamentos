@@ -86,3 +86,11 @@
 59,Arcanine
 25,Pikachu
 52,Meowth
+81,Magnemite
+97,Hypno
+85,Dodrio
+133,Eevee
+147,Dratini
+94,Gengar
+34,Nidoking
+8,Wartortle
