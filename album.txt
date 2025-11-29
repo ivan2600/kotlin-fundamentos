@@ -100,3 +100,5 @@
 107,Hitmonchan
 130,Gyarados
 100,Voltorb
+19,Rattata
+45,Vileplume
